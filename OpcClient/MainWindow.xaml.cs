@@ -1,5 +1,4 @@
-﻿using CsvHelper;
-using Opc;
+﻿using Opc;
 using Opc.Da;
 using System;
 using System.Collections.Generic;
@@ -275,34 +274,34 @@ namespace OpcClient
             bool bCreated = false;
 
             cDateTime.DateTimeCurrent = DateTime.Now;
-            TextWriter fileWriter;
-            if (!File.Exists(strFilename))
-            {
-                fileWriter = File.CreateText(strFilename);
-                bCreated = true;
-            }
-            else
-            {
-                fileWriter = File.AppendText(strFilename);
-            }
+            //TextWriter fileWriter;
+            //if (!File.Exists(strFilename))
+            //{
+            //    fileWriter = File.CreateText(strFilename);
+            //    bCreated = true;
+            //}
+            //else
+            //{
+            //    fileWriter = File.AppendText(strFilename);
+            //}
 
-            var csv = new CsvWriter(fileWriter);
-            if (bCreated)
-            {
-                //csv.WriteField("1");
-                //csv.NextRecord();
-                for (int i = 0; i < cSensorViewModel.ListSensorItem.Count; i++)
-                    csv.WriteField(cSensorViewModel.ListSensorItem[i].Name);
-                csv.NextRecord();
-            }
+            //var csv = new CsvWriter(fileWriter);
+            //if (bCreated)
+            //{
+            //    //csv.WriteField("1");
+            //    //csv.NextRecord();
+            //    for (int i = 0; i < cSensorViewModel.ListSensorItem.Count; i++)
+            //        csv.WriteField(cSensorViewModel.ListSensorItem[i].Name);
+            //    csv.NextRecord();
+            //}
 
-            csv.WriteField(cDateTime.DateTimeCurrent.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-            for (int i = 0; i < cSensorViewModel.ListSensorItem.Count; i++)
-            {
-                csv.WriteField(cSensorViewModel.ListSensorItem[i].Value);
-            }
-            csv.NextRecord();
-            fileWriter.Close();
+            //csv.WriteField(cDateTime.DateTimeCurrent.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            //for (int i = 0; i < cSensorViewModel.ListSensorItem.Count; i++)
+            //{
+            //    csv.WriteField(cSensorViewModel.ListSensorItem[i].Value);
+            //}
+            //csv.NextRecord();
+            //fileWriter.Close();
             iCurrentCount++;
             cCurrentCounter.Value = iCurrentCount.ToString();
         }
@@ -439,21 +438,21 @@ namespace OpcClient
             string strFilename = "items.csv";
 
             cDateTime.DateTimeCurrent = DateTime.Now;
-            TextWriter fileWriter;
-            fileWriter = File.CreateText(strFilename);
+            //TextWriter fileWriter;
+            //fileWriter = File.CreateText(strFilename);
 
-            var csv = new CsvWriter(fileWriter);
-            //csv.WriteField("1");
+            //var csv = new CsvWriter(fileWriter);
+            ////csv.WriteField("1");
+            ////csv.NextRecord();
+            //for (int i = 0; i < cSensorViewModel.ListSensorItem.Count; i++)
+            //{
+            //    csv.WriteField(cSensorViewModel.ListSensorItem[i].Name);
+            //    csv.WriteField(cSensorViewModel.ListSensorItem[i].DataType);
+            //    csv.NextRecord();
+            //}
+
             //csv.NextRecord();
-            for (int i = 0; i < cSensorViewModel.ListSensorItem.Count; i++)
-            {
-                csv.WriteField(cSensorViewModel.ListSensorItem[i].Name);
-                csv.WriteField(cSensorViewModel.ListSensorItem[i].DataType);
-                csv.NextRecord();
-            }
-
-            csv.NextRecord();
-            fileWriter.Close();
+            //fileWriter.Close();
         }
 
         private void SonsorList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
